@@ -1,0 +1,60 @@
+<!-- <h1>Book Store</h1> -->
+<!-- <p>
+  Welcome {{ authService.currentUser }}
+</p> -->
+
+<div class="row">
+  <div class="col-2">
+    <!-- <div class="list-group sticky-top">
+      <a href="" class="list-group-item  list-group-item-active" [class.active]="!categoryId"> All Categories </a>
+      <a *ngFor="let c of categories" routerLink="/" [queryParams]="{ categoryId: c.id }" href="#" class="list-group-item list-group-item-active"
+        [class.active]="categoryId == c.id">
+        {{c.name}}
+      </a>
+    </div> -->
+    
+    <app-books-filter [cat]="categoryId" >
+
+    </app-books-filter>
+
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <ng-container *ngFor="let book of books let i = index">
+        <div class="card-deck">
+          <div class="card" style="width: 16rem;">
+            <img class="card-img-top" src={{book.url}} alt="{{book.title}}">
+            <div class="card-body">
+              <h5 class="card-title">{{book.title}}</h5>
+              <h6 class="card-title">{{book.author.name}}</h6>
+              <!-- <p class="card-text">{{book.description}}</p> -->
+              <p class="card-text">{{book.price | currency}}</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary btn-block">Add to Cart</a>
+            </div>
+
+          </div>
+        </div>
+        <!-- <div *ngIf="(i+1) % 3 === 0" class="w-100"></div> -->
+      </ng-container>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- <ul>
+  <li *ngIf="authService.isAdmin">
+    <a routerLink="/admin">Admin</a>
+  </li>
+  <li *ngIf="!authService.isLoggedIn()">
+    <a routerLink="/login">Login</a>
+  </li>
+  <li *ngIf="authService.isLoggedIn()">
+    <a (click)="authService.logout()" href=""> Logout </a>
+  </li>
+ 
+</ul> -->
